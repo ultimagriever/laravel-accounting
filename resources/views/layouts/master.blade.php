@@ -2,8 +2,8 @@
 <html lang="{{ app()->getLocale() }}">
   <head>
     <title>{{ env('APP_NAME') }}</title>
-    <link href="css/app.css" type="text/css" rel="stylesheet" />
-    <script type="text/javascript" src="js/app.js"></script>
+    <link href="/css/app.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/app.js"></script>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="Pamela Argentino" />
@@ -32,12 +32,12 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a href="{{ route('suppliers.index') }}" class="nav-link">
-                Suppliers
+                Fornecedores
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('bills.index') }}" class="nav-link">
-                Bills
+                Contas a Pagar
               </a>
             </li>
           </ul>
@@ -47,5 +47,6 @@
     <div class="container">
       @yield('content')
     </div>
+    @include('shared.modal')
   </body>
 </html>

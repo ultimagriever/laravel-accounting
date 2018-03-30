@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Bill;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\BillRequest;
+use Request;
 
 class BillController extends Controller
 {
@@ -15,7 +15,7 @@ class BillController extends Controller
     public function index()
     {
       $bills = Bill::all();
-      return view('bills.index', compact('bills'));
+      return Request::wantsJson() ? $bills : view('bills.index', compact('bills'));
     }
 
     /**
@@ -25,18 +25,22 @@ class BillController extends Controller
      */
     public function create()
     {
-        //
+        $bill = new Bill();
+
+        return view('bills.create', compact('bill'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\BillRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BillRequest $request)
     {
-        //
+        $bill = Bill::create($request->all());
+
+        return Request::wantsJson() ? $bill : redirect('bills');
     }
 
     /**
@@ -47,7 +51,9 @@ class BillController extends Controller
      */
     public function show($id)
     {
-        //
+        $bill = Bill::find($id);
+
+        return Request::wantsJson() ? $bill : view('bills.show', compact('bill'));
     }
 
     /**
@@ -58,19 +64,24 @@ class BillController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bill = Bill::find($id);
+
+        return view('bills.edit', compact('bill'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\BillRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BillRequest $request, $id)
     {
-        //
+        $bill = Bill::find($id);
+        $bill->update($request->all());
+
+        return Request::wantsJson() ? $bill : redirect('bills');
     }
 
     /**
@@ -81,6 +92,9 @@ class BillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $bill = Bill::find($id);
+        $deleted = $bill->delete();
+
+        return Request::wantsJson() ? (string) $deleted : redirect('bills');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends($layout)
 
 @section('meta')
   <meta name="description" content="Include your monthly bills and keep track of their due dates" />
@@ -9,17 +9,17 @@
   <div class="row">
     @include('shared.breadcrumbs', ['section' => 'bills'])
     <div class="col-md-12">
-      <h1>Bills</h1>
+      <h1>Contas a Pagar</h1>
     </div>
     <div class="col-md-12 table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>
             <th>#</th>
-            <th>Supplier</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Due Date</th>
+            <th>Fornecedor</th>
+            <th>Descrição</th>
+            <th>Montante</th>
+            <th>Data de Vencimento</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
           @empty
             <tr>
               <td colspan="5" class="text-center">
-                No records found. Would you like to <a href="{{ route('bills.create') }}">insert a new bill</a>?
+                Nenhum registro encontrado. Gostaria de <a href="{{ route('bills.create') }}">inserir uma nova conta a pagar</a>?
               </td>
             </tr>
           @endforelse

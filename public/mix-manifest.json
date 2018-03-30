@@ -1,4 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/fonts/font-awesome/fontawesome-webfont.eot": "/fonts/font-awesome/fontawesome-webfont.eot",
+    "/fonts/font-awesome/fontawesome-webfont.svg": "/fonts/font-awesome/fontawesome-webfont.svg",
+    "/fonts/font-awesome/fontawesome-webfont.ttf": "/fonts/font-awesome/fontawesome-webfont.ttf",
+    "/fonts/font-awesome/fontawesome-webfont.woff": "/fonts/font-awesome/fontawesome-webfont.woff",
+    "/fonts/font-awesome/fontawesome-webfont.woff2": "/fonts/font-awesome/fontawesome-webfont.woff2"
 }
