@@ -13,4 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::resource('bills', 'BillController');
+Route::resource('suppliers', 'SupplierController');
